@@ -4590,18 +4590,18 @@ restore_futurerestore() {
     if [[ $1 == "--use-pwndfu" ]]; then
         device_fw_key_check
         pushd ../resources >/dev/null
-        if [[ $platform == "macos" ]]; then
-            if (( mac_majver >= 12 )); then
-                opt="/usr/bin/python3 -m http.server -b 127.0.0.1 $port"
-            else
-                opt="/usr/bin/python -m SimpleHTTPServer $port"
-            fi
-        else
-            if [[ -z $(command -v python3) ]]; then
-                error "Python 3 is not installed, cannot continue. Make sure to have python3 installed."
-            fi
-            opt="$(command -v python3) -m http.server -b 127.0.0.1 $port"
-        fi
+        #if [[ $platform == "macos" ]]; then
+        #    if (( mac_majver >= 12 )); then
+        #        opt="/usr/bin/python3 -m http.server -b 127.0.0.1 $port"
+        #    else
+        #        opt="/usr/bin/python -m SimpleHTTPServer $port"
+        #    fi
+        #else
+        #    if [[ -z $(command -v python3) ]]; then
+        #        error "Python 3 is not installed, cannot continue. Make sure to have python3 installed."
+        #    fi
+        #    opt="$(command -v python3) -m http.server -b 127.0.0.1 $port"
+        #fi
         log "Starting local server for firmware keys: $opt"
         $opt &
         httpserver_pid=$!
