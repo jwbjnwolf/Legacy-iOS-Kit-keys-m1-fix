@@ -6,7 +6,7 @@ If you take a look in my created `html/firmware/<device>` folder, I've doubled t
 
 Why?
 
-The HTML request that the `restore.sh` script makes looking for the device's `index.html` is looking for the `<device>` in the URL request twice. As a result the script fails with `(failed to get FirmwareJson from Server)` because the `http.server` launched by the script returns a `404`.
+The HTTP request that the `restore.sh` script makes looking for the device's `index.html` is looking for the `<device>` in the URL request twice. As a result the script fails with `(failed to get FirmwareJson from Server)` because the `http.server` launched by the script returns a `404`.
 
 If you take a look at [this commit](https://github.com/jwbjnwolf/Legacy-iOS-Kit-keys-m1-fix/commit/40521ffde132454c05c3e27a449a71696a6cd167), I've commented out in the `restore.sh` file where it launches `http.server` on port `8888` using the `resources` folder as root. We want to instead spin up our own `http.server` @ port `8888` whilst inside the `http` folder so that's used as root. In order to do that follow below steps:
 
