@@ -35,3 +35,13 @@ The device never seems to get picked up again o the iBSS reconnect if you do not
 ---
 
 P.s: This is just a little cleaned up repo to highlight these two things. The two devices I had to try this tool with is an iPhone 5S global downgrading that to iOS 10.3.3, and an iPad 4 global downgrading that to iOS 8.4.1. Hence they're the only two devices  I've included in this repo for example. Get everything from the main repo and use this as a follow along if you run into these two issues with the firmware keys and iBSS reconnect fails.
+
+---
+
+### Signing into 2fa protected iCloud with old iOS versions not supporting 2fa:
+
+1) Do your apple id and password as normal.
+2) It comes up with an error message that the details are incorrect.
+3) On another Apple device that you've set to receive codes at, you'll receive the 6 digit 2fa code.
+4) On your old iOS device, do your password again along with the 6 digits of the code after the password with no space.
+5) You will now log into your iCloud successfully.
