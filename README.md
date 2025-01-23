@@ -8,13 +8,13 @@ Why?
 
 The HTTP request that the `restore.sh` script makes looking for the device's `index.html` is looking for the `<device>` in the URL request twice. As a result the script fails with `(failed to get FirmwareJson from Server)` because the `http.server` launched by the script returns a `404`.
 
-If you take a look at [this commit](https://github.com/jwbjnwolf/Legacy-iOS-Kit-keys-m1-fix/commit/40521ffde132454c05c3e27a449a71696a6cd167), I've commented out in the `restore.sh` file where it launches `http.server` on port `8888` using the `resources` folder as root. We want to instead spin up our own `http.server` @ port `8888` whilst inside the `http` folder so that's used as root. In order to do that follow below steps:
+If you take a look at [this commit](https://github.com/jwbjnwolf/Legacy-iOS-Kit-keys-m1-fix/commit/eaaaf006e629287699cefeb89c54886ddf451f65), I've commented out in the `restore.sh` file where it launches `http.server` on port `8888` using the `resources` folder as root. We want to instead spin up our own `http.server` @ port `8888` whilst inside the `http` folder so that's used as root. In order to do that follow below steps:
 
 1) Create `html` folder, with an enclosing `firmware` folder`.
 2) Copy the `<device>` you're wanting to that folder from `resources/firmware`.
 3) Inside that copied `<device>` folder, create a subfolder of the same name as that `<device>` folder.
 4) Move the desired `<build>` folder in this duplicated `<device>` folder. Delete the rest for tidiness.
-5) Ensure you make [the edit to the restore.sh](https://github.com/jwbjnwolf/Legacy-iOS-Kit-keys-m1-fix/commit/40521ffde132454c05c3e27a449a71696a6cd167) so it doesn't try spinning it a `http.server` when we're going to run one ourself.
+5) Ensure you make [the edit to the restore.sh](https://github.com/jwbjnwolf/Legacy-iOS-Kit-keys-m1-fix/commit/eaaaf006e629287699cefeb89c54886ddf451f65) so it doesn't try spinning it a `http.server` when we're going to run one ourself.
 6) In terminal, in a new tab, `cd` inside the `html` folder.
 7) Now run the `http.server` like so:
    ```
